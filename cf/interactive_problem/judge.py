@@ -24,19 +24,23 @@ def exit_with_success(n, moves):
 
 NMAX=1000
 
+
 def play(n=NMAX, k=None, seed=None):
-    n = random.randint(1, 10)
-    a = list(range(1, n+1))
-    random.shuffle(a);
-    print(n)
-    print(a)
+    a = [1,6,4,2,3,5,4]
+    n = len(a)
+    k = 6
+    print("{} {}".format(n, k))
     sys.stdout.flush()
     while True:
         words = sys.stdin.readline().split()
-        if words[0] == '?':
+        if words[0] == 'and':
             l = int(words[1])
             r = int(words[2])
-            print(sorted(a[l-1: r]))
+            print(a[l-1]&a[r-1])
+        elif words[0] == 'or':
+            l = int(words[1])
+            r = int(words[2])
+            print(a[l-1]|a[r-1])
         sys.stdout.flush()
 
 
