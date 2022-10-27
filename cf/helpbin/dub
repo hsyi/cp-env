@@ -1,0 +1,18 @@
+# ! /bin/bash
+current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+
+code() {
+if [ -z $2 ]; then
+    file="tmp/code.cpp"
+    persistname="tmp/${1}.cpp"
+else
+    file="tmp/${1}.cpp"
+    persistname="tmp/${2}.cpp"
+fi
+
+cp ${file} ${persistname}
+
+nvim $file
+}
+
+code $1

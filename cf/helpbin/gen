@@ -1,0 +1,17 @@
+# ! /bin/bash
+#g++-11 -Wall -Wextra -Wshadow -D_GLIBCXX_ASSERTIONS -DHESYDEBUG=1 -ggdb3 -fmax-errors=2 -std=c++20 -Wno-sign-conversion /usr/local/Cellar/gcc/11.2.0/include/c++/11.2.0/x86_64-apple-darwin20/bits/stdc++.h
+#g++-11 -Wall -Wextra -Wshadow -D_GLIBCXX_ASSERTIONS -DHESYDEBUG=1 -fmax-errors=2 -std=c++17 -Wno-sign-conversion tmp/code2.cpp -I/Users/heshengyi/Downloads/hesy/leetcode/cf -I/Users/heshengyi/Downloads/hesy/leetcode/cf/AtCode  -o b.out && ./b.out
+
+cr() {
+if [ -z $1 ]; then
+    file="jngen_examples/code.cpp"
+else
+    file="jngen_examples/${1}.cpp"
+fi
+echo "compile $file and run"
+g++-11 -Wall -Wextra -Wshadow -D_GLIBCXX_ASSERTIONS -DHESYDEBUG=1 -fmax-errors=2 -std=c++17 -Wno-sign-conversion ${file} -I/Users/heshengyi/Downloads/hesy/cp/cf/jngen -o gen.out || exit
+#g++-11 -Wall -Wextra -Wshadow -D_GLIBCXX_ASSERTIONS -fmax-errors=2 -std=c++17 -Wno-sign-conversion ${file} -I/Users/heshengyi/Downloads/hesy/leetcode/cf -I/Users/heshengyi/Downloads/hesy/leetcode/cf/AtCode  -o a.out || exit
+echo "compile sucesse!"
+}
+
+cr $1

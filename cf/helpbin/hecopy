@@ -1,0 +1,6 @@
+# ! /bin/bash
+current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+cat $1| pbcopy 
+
+echo "copy $1 to pb copy"
+

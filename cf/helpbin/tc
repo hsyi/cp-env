@@ -1,0 +1,16 @@
+# ! /bin/bash
+CFHOME=/Users/baidu/contest/cp/cf
+tc() {
+if [ -z $1 ]; then
+    file="tmp/code.cpp"
+else
+    file="tmp/${1}.cpp"
+fi
+echo "copy ${1} code to clipboard!"
+python ${CFHOME}/AtCode/expander.py -c --lib AtCode ${file} > tmp/expand1.cpp
+python ${CFHOME}/helpbin/expander.py -c --lib ${CFHOME} tmp/expand1.cpp > tmp/expand2.cpp
+pbcopy < tmp/expand2.cpp
+echo "done!"
+}
+
+tc $*

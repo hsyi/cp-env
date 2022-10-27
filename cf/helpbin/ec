@@ -1,0 +1,10 @@
+# ! /bin/bash
+if [ -z $1 ]; then
+    subl tmp/code.cpp
+elif [[ $1  =~ ^[a-zA-Z] ]]; then
+    name=$1
+    shift
+    subl tmp/${name}.cpp $@
+else
+    subl tmp/code.cpp $*
+fi

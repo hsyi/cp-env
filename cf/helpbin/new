@@ -1,0 +1,31 @@
+# ! /bin/bash
+current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+
+code() {
+if [ -z $1 ]; then
+    file="tmp/code.cpp"
+    persistname="persist/code$current_time.cpp"
+else
+    file="tmp/${1}.cpp"
+    persistname="persist/$code_${1}_$current_time.cpp"
+fi
+echo $file
+if [ ! -f "$file" ]; then
+   cp head.cpp "$file"
+   touch tmp/in
+else
+    if [ ! -d "persist" ]; then
+        mkdir persist
+    fi
+   mv $file ${persistname}
+   echo "old file persist in ${persistname}"
+   cp head.cpp "$file"
+   rm tmp/in
+   touch tmp/in
+fi
+
+#subl ${file} +3
+subl ${file}
+}
+
+code $1
